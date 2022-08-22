@@ -13,10 +13,10 @@ const ArticleList = () => {
   useEffect(() => {
     getArticles(topic).then(({ articles }) => {
       setArticles(articles);
-      setTimeout(() => setIsLoading(false), 2000);
+      setIsLoading(false);
     });
   }, [topic]);
-  if (isLoading) return <h1>Loading...</h1>;
+  if (isLoading) return <p>Loading...</p>;
   return (
     <div className="ArticleList">
       {articles.map((article) => {
