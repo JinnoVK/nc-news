@@ -1,15 +1,18 @@
 import { useState, useEffect } from "react";
 import { getArticles } from "../api/api";
 import ArticleCard from "./ArticleCard";
+import { useParams } from "react-router-dom";
 
 const ArticleList = () => {
+  let { topic } = useParams();
+
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    getArticles().then(({ articles }) => {
+    getArticles(topic).then(({ articles }) => {
       setArticles(articles);
     });
-  }, []);
+  }, [topic]);
 
   return (
     <div className="ArticleList">
