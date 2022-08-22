@@ -5,9 +5,11 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import dayjs from "dayjs";
-import { Link } from "react-router-dom";
 
-export default function ArticleCard({ article }) {
+export default function ArticleBody({ article }) {
+  const newArticle = { ...article };
+  const { 0: articleBody } = newArticle;
+
   return (
     <Grid
       container
@@ -24,26 +26,24 @@ export default function ArticleCard({ article }) {
             <CardContent>
               <div className="articleCardTop">
                 <Typography variant="caption" color="text.secondary">
-                  {article.topic}
+                  {articleBody?.topic}
                 </Typography>
                 <Typography variant="caption" color="text.secondary">
-                  Posted by: {article.author}
+                  Posted by: {articleBody?.author}
                 </Typography>
                 <Typography variant="caption" color="text.secondary">
-                  {dayjs(article.created_at).format("DD/MM/YYYY")}
+                  {dayjs(articleBody?.created_at).format("DD/MM/YYYY")}
                 </Typography>
               </div>
               <Typography gutterBottom variant="h5" component="div">
-                <Link to={`/article/${article.article_id}`}>
-                  {article.title}
-                </Link>
+                {articleBody?.title}
+              </Typography>
+              <Typography gutterBottom variant="body2" component="div">
+                {articleBody?.body}
               </Typography>
               <div className="articleCardBottom">
                 <Typography variant="caption" color="text.secondary">
-                  Comments: {article.comment_count}
-                </Typography>
-                <Typography variant="caption" color="text.secondary">
-                  Score: {article.votes}
+                  Score: {articleBody?.votes}
                 </Typography>
               </div>
             </CardContent>
