@@ -6,14 +6,17 @@ import { useParams } from "react-router-dom";
 const ArticleList = () => {
   let { topic } = useParams();
 
+  const [isLoading, setIsLoading] = useState(true);
+
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
     getArticles(topic).then(({ articles }) => {
       setArticles(articles);
+      setIsLoading(false);
     });
   }, [topic]);
-
+  if (isLoading) return <p>Loading...</p>;
   return (
     <div className="ArticleList">
       {articles.map((article) => {
