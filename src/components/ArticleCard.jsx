@@ -24,7 +24,7 @@ export default function ArticleCard({ article }) {
             <CardContent>
               <div className="articleCardTop">
                 <Typography variant="caption" color="text.secondary">
-                  {article.topic}
+                  Topic: {article.topic}
                 </Typography>
                 <Typography variant="caption" color="text.secondary">
                   Posted by: {article.author}

@@ -7,9 +7,6 @@ import Grid from "@mui/material/Grid";
 import dayjs from "dayjs";
 
 export default function ArticleBody({ article }) {
-  const newArticle = { ...article };
-  const { 0: articleBody } = newArticle;
-
   return (
     <Grid
       container
@@ -26,24 +23,24 @@ export default function ArticleBody({ article }) {
             <CardContent>
               <div className="articleCardTop">
                 <Typography variant="caption" color="text.secondary">
-                  {articleBody?.topic}
+                  {article?.topic}
                 </Typography>
                 <Typography variant="caption" color="text.secondary">
-                  Posted by: {articleBody?.author}
+                  Posted by: {article?.author}
                 </Typography>
                 <Typography variant="caption" color="text.secondary">
-                  {dayjs(articleBody?.created_at).format("DD/MM/YYYY")}
+                  {dayjs(article?.created_at).format("DD/MM/YYYY")}
                 </Typography>
               </div>
               <Typography gutterBottom variant="h5" component="div">
-                {articleBody?.title}
+                {article?.title}
               </Typography>
               <Typography gutterBottom variant="body2" component="div">
-                {articleBody?.body}
+                {article?.body}
               </Typography>
               <div className="articleCardBottom">
                 <Typography variant="caption" color="text.secondary">
-                  Score: {articleBody?.votes}
+                  Score: {article?.votes}
                 </Typography>
               </div>
             </CardContent>

@@ -6,7 +6,7 @@ import ArticleBody from "./ArticleBody";
 const ArticleContainer = () => {
   let { articleID } = useParams();
 
-  const [article, setArticles] = useState([]);
+  const [article, setArticles] = useState({});
 
   useEffect(() => {
     getArticleById(articleID).then(({ article }) => {
@@ -16,7 +16,7 @@ const ArticleContainer = () => {
 
   return (
     <div className="ArticleContainer">
-      <ArticleBody key={article.article_id} article={article} />
+      <ArticleBody article={article[0]} />
     </div>
   );
 };

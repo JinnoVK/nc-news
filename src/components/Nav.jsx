@@ -30,7 +30,11 @@ export default function Nav() {
           <TabList onChange={handleChange} centered>
             <Tab
               label={
-                <Link className="links" to="/">
+                <Link
+                  className="links"
+                  to="/"
+                  onClick={() => (window.location.href = "/")}
+                >
                   Home
                 </Link>
               }
