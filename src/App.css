@@ -11,3 +11,9 @@
   display: flex;
   justify-content: space-between;
 }
+
+.links {
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+}
