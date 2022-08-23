@@ -3,6 +3,7 @@ import { getArticleById, getArticleComments } from "../api/api";
 import { useParams } from "react-router-dom";
 import ArticleBody from "./ArticleBody";
 import CommentCard from "./CommentCard";
+import CreateComment from "./CreateComment";
 
 const ArticleContainer = () => {
   let { articleID } = useParams();
@@ -22,6 +23,7 @@ const ArticleContainer = () => {
   return (
     <div className="ArticleContainer">
       <ArticleBody article={article[0]} />
+      <CreateComment articleID={articleID} setComments={setComments} />
       {comments.map((comment) => {
         return <CommentCard key={comment.comment_id} comment={comment} />;
       })}
