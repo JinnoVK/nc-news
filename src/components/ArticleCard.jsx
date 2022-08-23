@@ -6,8 +6,55 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import dayjs from "dayjs";
 import { Link } from "react-router-dom";
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
+import { ThumbDown } from "@mui/icons-material";
+import { Button } from "@mui/material";
+import { patchArticleById } from "../api/api";
+import { useState } from "react";
 
 export default function ArticleCard({ article }) {
+  const [optimisticVotes, setOptimisticVotes] = useState(0);
+  const [isUpvoted, setIsUpvoted] = useState(false);
+  const [isDownvoted, setIsDownvoted] = useState(false);
+  const [err, setErr] = useState(null);
+
+  const handleUpvoteClick = (id, isUpvote) => {
+    if (!isUpvoted) {
+      setOptimisticVotes((currVotes) => {
+        setErr(null);
+        return currVotes + 1;
+      });
+      patchArticleById(id, isUpvote).catch((err) => {
+        setOptimisticVotes((currVotes) => {
+          setErr("Something went wrong, please try again.");
+          return currVotes - 1;
+        });
+      });
+    } else {
+      alert("You may only vote once");
+    }
+    setIsUpvoted(true);
+  };
+
+  const handleDownvoteClick = (id, isDownvote) => {
+    if (!isDownvoted) {
+      setOptimisticVotes((currVotes) => {
+        setErr(null);
+        return currVotes - 1;
+      });
+      patchArticleById(id, isDownvote).catch((err) => {
+        setOptimisticVotes((currVotes) => {
+          setErr("Something went wrong, please try again.");
+          return currVotes + 1;
+        });
+      });
+    } else {
+      alert("You may only vote once");
+    }
+    setIsDownvoted(true);
+  };
+
+  if (err) return <p>{err}</p>;
   return (
     <Grid
       container
@@ -43,11 +90,24 @@ export default function ArticleCard({ article }) {
                   Comments: {article.comment_count}
                 </Typography>
                 <Typography variant="caption" color="text.secondary">
-                  Score: {article.votes}
+                  Score: {article.votes + optimisticVotes}
                 </Typography>
               </div>
             </CardContent>
-            <CardActions></CardActions>
+            <CardActions>
+              <section className="cardVotes">
+                <Button
+                  onClick={() => handleUpvoteClick(article.article_id, true)}
+                >
+                  <ThumbUpIcon />
+                </Button>
+                <Button
+                  onClick={() => handleDownvoteClick(article.article_id, false)}
+                >
+                  <ThumbDown />
+                </Button>
+              </section>
+            </CardActions>
           </div>
         </Card>
       </Grid>
