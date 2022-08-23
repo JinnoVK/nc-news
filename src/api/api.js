@@ -23,3 +23,18 @@ export const getArticleById = async (id) => {
 
   return data;
 };
+
+export const patchArticleById = async (id, isUpvote) => {
+  if (isUpvote) {
+    const { data } = await axios.patch(
+      `https://be-ncnews.herokuapp.com/api/articles/${id}`,
+      { inc_votes: 1 }
+    );
+    return data;
+  }
+  const { data } = await axios.patch(
+    `https://be-ncnews.herokuapp.com/api/articles/${id}`,
+    { inc_votes: -1 }
+  );
+  return data;
+};
