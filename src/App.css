@@ -29,3 +29,12 @@
 .commentCard {
   background-color: rgb(241, 241, 241);
 }
+
+.commentCardTop {
+  display: flex;
+  justify-content: space-between;
+}
+
+.commentCardBottom {
+  float: right;
+}
