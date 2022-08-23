@@ -38,3 +38,13 @@
 .commentCardBottom {
   float: right;
 }
+
+.commentInput {
+  width: 100%;
+}
+
+#commentInput {
+  width: 100vw;
+  padding: 0px;
+  padding-bottom: 30px;
+}
