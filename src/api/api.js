@@ -38,3 +38,11 @@ export const patchArticleById = async (id, isUpvote) => {
   );
   return data;
 };
+
+export const getArticleComments = async (id) => {
+  const { data } = await axios.get(
+    `https://be-ncnews.herokuapp.com/api/articles/${id}/comments`
+  );
+
+  return data;
+};
