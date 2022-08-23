@@ -16,7 +16,7 @@ const ArticleContainer = () => {
 
   return (
     <div className="ArticleContainer">
-      <ArticleBody article={article[0]} />
+      <ArticleBody article={article[0]} setArticles={setArticles} />
     </div>
   );
 };
