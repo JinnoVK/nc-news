@@ -46,3 +46,12 @@ export const getArticleComments = async (id) => {
 
   return data;
 };
+
+export const postCommentById = async (id, body) => {
+  const { data } = await axios.post(
+    `https://be-ncnews.herokuapp.com/api/articles/${id}/comments`,
+    { username: "grumpy19", body: body }
+  );
+
+  return data;
+};
