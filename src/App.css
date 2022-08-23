@@ -12,8 +12,16 @@
   justify-content: space-between;
 }
 
+.singleArticleCardBottom {
+  float: right;
+}
+
 .links {
   text-decoration: none;
   display: flex;
   justify-content: space-between;
+}
+
+.cardVotes {
+  margin-left: auto;
 }
