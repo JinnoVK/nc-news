@@ -52,3 +52,7 @@
 .sort {
   float: right;
 }
+
+.sortLinks {
+  flex-grow: 1;
+}

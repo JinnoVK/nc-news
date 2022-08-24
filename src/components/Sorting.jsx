@@ -24,19 +24,29 @@ const Sorting = () => {
           onChange={handleSelectChange}
         >
           <MenuItem value="asc">
-            <Link to={`${pathname}?order=asc`}>Ascending</Link>
+            <Link className="sortLinks" to={`${pathname}?order=asc`}>
+              Ascending
+            </Link>
           </MenuItem>
           <MenuItem value="desc">
-            <Link to={`${pathname}?order=desc`}>Descending</Link>
+            <Link className="sortLinks" to={`${pathname}?order=desc`}>
+              Descending
+            </Link>
           </MenuItem>
           <MenuItem value="date">
-            <Link to={`${pathname}?sort=created_at`}>Date</Link>
+            <Link className="sortLinks" to={`${pathname}?sort=created_at`}>
+              Date
+            </Link>
           </MenuItem>
           <MenuItem value="comments">
-            <Link to={`${pathname}?sort=comment_count`}>Comment count</Link>
+            <Link className="sortLinks" to={`${pathname}?sort=comment_count`}>
+              Comment count
+            </Link>
           </MenuItem>
           <MenuItem value="votes">
-            <Link to={`${pathname}?sort=votes`}>Votes</Link>
+            <Link className="sortLinks" to={`${pathname}?sort=votes`}>
+              Votes
+            </Link>
           </MenuItem>
         </Select>
       </FormControl>
