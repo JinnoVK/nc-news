@@ -48,3 +48,11 @@
   padding: 0px;
   padding-bottom: 30px;
 }
+
+.sort {
+  float: right;
+}
+
+.sortLinks {
+  flex-grow: 1;
+}

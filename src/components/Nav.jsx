@@ -10,7 +10,6 @@ import { useState, useEffect } from "react";
 
 export default function Nav() {
   const [value, setValue] = React.useState("1");
-
   const [topics, setTopics] = useState([]);
 
   useEffect(() => {
