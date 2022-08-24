@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export const getArticles = async (topic = "") => {
+export const getArticles = async (topic = "", orderType, sortBy) => {
   const { data } = await axios.get(
-    `https://be-ncnews.herokuapp.com/api/articles?topic=${topic}`
+    `https://be-ncnews.herokuapp.com/api/articles?topic=${topic}&order=${orderType}&sort=${sortBy}`
   );
 
   return data;
