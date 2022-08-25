@@ -1,7 +1,7 @@
 const ErrorPage = (props) => {
   return (
     <div className="Error">
-      <h1>{props.message}</h1>
+      <h2>{props.message}</h2>
       <h3>
         Looks like this page doesn't exist yet, click home to go back to the
         main page
