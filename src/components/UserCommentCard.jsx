@@ -5,19 +5,28 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import dayjs from "dayjs";
-import UserCommentCard from "./UserCommentCard";
+import { Button } from "@mui/material";
+import { deleteCommentById, getArticleComments } from "../api/api";
+import { useState } from "react";
 
-export default function CommentCard({ comment, setComments, articleID }) {
-  if (comment.author === "grumpy19") {
-    return (
-      <UserCommentCard
-        comment={comment}
-        setComments={setComments}
-        articleID={articleID}
-      />
-    );
-  }
+export default function UserCommentCard({ comment, setComments, articleID }) {
+  const [isActivated, setIsActivated] = useState(false);
 
+  const handleClick = () => {
+    if (!isActivated) {
+      deleteCommentById(comment.comment_id).then(() => {
+        getArticleComments(articleID).then(({ comments }) => {
+          setComments(comments);
+        });
+
+        alert("Successfully deleted comment!");
+      });
+
+      setIsActivated(true);
+    } else {
+      alert("Please wait until your comment is removed!");
+    }
+  };
   return (
     <Grid
       container
@@ -49,7 +58,11 @@ export default function CommentCard({ comment, setComments, articleID }) {
                 </Typography>
               </div>
             </CardContent>
-            <CardActions></CardActions>
+            <CardActions>
+              <section className="cardVotes">
+                <Button onClick={() => handleClick()}> Delete comment</Button>
+              </section>
+            </CardActions>
           </div>
         </Card>
       </Grid>

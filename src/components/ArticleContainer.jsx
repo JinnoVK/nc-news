@@ -25,7 +25,14 @@ const ArticleContainer = () => {
       <ArticleBody article={article[0]} />
       <CreateComment articleID={articleID} setComments={setComments} />
       {comments.map((comment) => {
-        return <CommentCard key={comment.comment_id} comment={comment} />;
+        return (
+          <CommentCard
+            key={comment.comment_id}
+            comment={comment}
+            setComments={setComments}
+            articleID={articleID}
+          />
+        );
       })}
     </div>
   );

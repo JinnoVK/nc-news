@@ -55,3 +55,11 @@ export const postCommentById = async (id, body) => {
 
   return data;
 };
+
+export const deleteCommentById = async (commentId) => {
+  const { data } = await axios.delete(
+    `https://be-ncnews.herokuapp.com/api/comments/${commentId}`
+  );
+
+  return data;
+};
