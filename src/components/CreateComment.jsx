@@ -10,11 +10,15 @@ export default function CreateComment({ articleID, setComments }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    postCommentById(articleID, commentBody).then(({ comment }) => {
-      setComments((currComments) => {
-        return [...currComments, comment[0]];
+    if (commentBody.length === 0) {
+      alert("Comments cannot be empty");
+    } else {
+      postCommentById(articleID, commentBody).then(({ comment }) => {
+        setComments((currComments) => {
+          return [...currComments, comment[0]];
+        });
       });
-    });
+    }
     setCommentBody("");
   };
   return (
