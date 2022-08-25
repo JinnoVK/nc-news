@@ -5,9 +5,19 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import dayjs from "dayjs";
-import { Button } from "@mui/material";
+import UserCommentCard from "./UserCommentCard";
 
-export default function CommentCard({ comment }) {
+export default function CommentCard({ comment, setComments, articleID }) {
+  if (comment.author === "grumpy19") {
+    return (
+      <UserCommentCard
+        comment={comment}
+        setComments={setComments}
+        articleID={articleID}
+      />
+    );
+  }
+
   return (
     <Grid
       container
@@ -39,12 +49,7 @@ export default function CommentCard({ comment }) {
                 </Typography>
               </div>
             </CardContent>
-            <CardActions>
-              <section className="cardVotes">
-                <Button></Button>
-                <Button></Button>
-              </section>
-            </CardActions>
+            <CardActions></CardActions>
           </div>
         </Card>
       </Grid>
