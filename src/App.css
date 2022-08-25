@@ -56,3 +56,7 @@
 .sortLinks {
   flex-grow: 1;
 }
+
+.Error {
+  text-align: center;
+}

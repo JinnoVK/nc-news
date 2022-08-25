@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Nav from "./components/Nav";
 import { Route, Routes } from "react-router-dom";
 import ArticleContainer from "./components/ArticleContainer";
+import ErrorPage from "./components/ErrorPage";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<ArticleList />} />
+        <Route path="*" element={<ErrorPage />} />
         <Route path="/topics/:topic" element={<ArticleList />} />
         <Route path="/article/:articleID" element={<ArticleContainer />} />
       </Routes>

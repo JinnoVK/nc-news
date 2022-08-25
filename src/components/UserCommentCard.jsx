@@ -14,13 +14,15 @@ export default function UserCommentCard({ comment, setComments, articleID }) {
 
   const handleClick = () => {
     if (!isActivated) {
-      deleteCommentById(comment.comment_id).then(() => {
-        getArticleComments(articleID).then(({ comments }) => {
-          setComments(comments);
+      deleteCommentById(comment.comment_id)
+        .then(() => {
+          alert("Successfully deleted comment!");
+        })
+        .then(() => {
+          getArticleComments(articleID).then(({ comments }) => {
+            setComments(comments);
+          });
         });
-
-        alert("Successfully deleted comment!");
-      });
 
       setIsActivated(true);
     } else {
