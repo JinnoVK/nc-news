@@ -4,21 +4,31 @@ import { useParams } from "react-router-dom";
 import ArticleBody from "./ArticleBody";
 import CommentCard from "./CommentCard";
 import CreateComment from "./CreateComment";
+import ErrorPage from "./ErrorPage";
 
 const ArticleContainer = () => {
   let { articleID } = useParams();
 
   const [article, setArticles] = useState({});
   const [comments, setComments] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    getArticleById(articleID).then(({ article }) => {
-      setArticles(article);
-    });
+    getArticleById(articleID)
+      .then(({ article }) => {
+        setArticles(article);
+      })
+      .catch((err) => {
+        setError({ err });
+      });
     getArticleComments(articleID).then(({ comments }) => {
       setComments(comments);
     });
   }, [articleID]);
+
+  if (error) {
+    return <ErrorPage message={error.err.message} />;
+  }
 
   return (
     <div className="ArticleContainer">
